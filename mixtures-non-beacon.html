@@ -1,0 +1,483 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Mixtures (Non-Chemo)</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<script src="script.js"></script>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<main-header></main-header>
+			</div>
+		</header>
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="foc-smarttexts.html">FOC SmartTexts</a></li>
+				<li><a href="reference-links.html">Reference Links</a></li>
+				<li><a href="prn-reasons.html">PRN Reasons</a></li>
+				<li><a href="groups1and3.html">Group 1 and 3</a></li>
+				<li><a href="elements.html">Elements</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>Mixtures (Non-Chemo) ERX</h1>
+				<section>
+					<p>
+						Unlike most ERXs, radiotracers are <em>shell records</em>. No pharmacy verification and
+						inventory are required. <br>
+						The ERX is not used for ordering (at least not in any conventional sense).
+
+					</p>
+					<hr />
+				</section>
+				<section>
+					<h2>Workflow</h2>
+					<div class="row">
+						<div class="col-6 col-12-medium">
+							<ol>
+								<li>Patient is prescribed with a procedure where this ERX is associated with.</li>
+								<li>Prescriber prescribes a provisional order <em>e.g. PET MR</em>.</li>
+								<li>This is added to the radiologists work queue they approve the scan protocol.</li>
+								<li>The provisional order is converted to actual order.</li>
+							</ol>
+						</div>
+						<div class="col-6 col-12-medium">
+							<ol start="5">
+								<li>Then admin place the order when they book the patient in for the procedure.</li>
+								<li>Nurse/radiologist then give the radiopharmaceutical – and this part is documented in
+									epic using flow sheet rows. </li>
+								<li>This information is the used to track how much has been used.</li>
+							</ol>
+						</div>
+					</div>
+					<hr>
+				</section>
+
+				<section>
+					<h2>EHR Build Process</h2>
+					<div class="row">
+						<div class="col-12-large">
+							<ol>
+								<li>Build request comes from Nuclear Medicine via meds inbox.</li>
+								<li>Brillow analyst builds ERX and internally validated. No NDC required.</li>
+								<li>ERX is migrated up to production, then added to UCLH Build Bank med list.</li>
+								<li>Diagnostics team is informed so they can include it into their procedure build.</li>
+								<li>Update GetSmarts and close ClickUp task.</li>
+							</ol>
+						</div>
+					</div>
+					<hr>
+				</section>
+
+
+
+				<!-- Form -->
+				<section>
+					<h2>Form</h2>
+					<form onsubmit="saveFormAsTextFile(); return false;">
+						<div class="table-wrapper">
+							<table class="alt">
+								<thead>
+									<tr>
+										<th>Item</th>
+										<th>Description</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>.1</td>
+										<td>Med ID</td>
+										<td>
+											<div class="t-top tmd full-width" data-tooltip="408999XXX">
+												<input type="text" name="med-id" id="med-id" autocomplete="off" required
+													value="408999" />
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											.2 <br>
+											1100 <br>
+											1115
+										</td>
+										<td>
+											Medication name <br>
+											Order display name <br>
+											Short name
+										</td>
+										<td>
+											<div class="t-top t-md full-width" data-tooltip="As requested">
+												<input type="text" name="drug-name" id="drug-name" autocomplete="off"
+													required />
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-12">
+							<ul class="actions">
+								<li><input type="submit" value="Create import file" class="primary" />
+								</li>
+								<li><input type="reset" value="Reset" /></li>
+							</ul>
+						</div>
+
+					</form>
+				</section>
+
+				<br>
+				<hr>
+
+				<!-- Table -->
+				<section>
+					<h2>Radiopharmaceutical ERX Items Table</h2>
+
+
+					<h3>Configuration</h3>
+					<div class="table-wrapper">
+						<table class="alt">
+							<thead>
+								<tr>
+									<th>Item</th>
+									<th>Description</th>
+									<th>Value</th>
+									<th>Comments</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>.1</td>
+									<td>MED ID</td>
+									<td>408999<b>XXX</b></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>.2</td>
+									<td>MEDICATION NAME</td>
+									<td>Name as requested</td>
+									<td><em>e.g.</em> 177LU-PSMA-I&T</td>
+								</tr>
+								<tr>
+									<td>52</td>
+									<td>CONFIGURED?</td>
+									<td>UCLH Configured</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>9650</td>
+									<td>VALID FOR PRESCRIPTION?</td>
+									<td>Yes</td>
+									<td>Always for custom records</td>
+								</tr>
+								<tr>
+									<td>111</td>
+									<td>MEDICAL EQUIPMENT STATUS</td>
+									<td>No</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>130</td>
+									<td>DEA CLASS CODE</td>
+									<td>Non-Scheduled Medication</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>160</td>
+									<td>INVESTIGATIONAL?</td>
+									<td>Yes</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>830</td>
+									<td>REFILL OVERRIDE</td>
+									<td>0</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>850</td>
+									<td>BEGIN AGE OVERRIDE</td>
+									<td>0</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>1100</td>
+									<td>ORDER DISPLAY NAME</td>
+									<td>Name as requested</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1110</td>
+									<td>DEFAULT FREQUENCY</td>
+									<td>200902</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>.1110</td>
+									<td>DEFAULT FREQUENCY RECORD NAME</td>
+									<td>Once only</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>1115</td>
+									<td>SHORT NAME</td>
+									<td>Name as requested</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>3060</td>
+									<td>INCLUDE STRENGTH WHEN USED AS ADDITIVE?</td>
+									<td>No</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>3070</td>
+									<td>INCLUDE FORM IN ORDER NAME?</td>
+									<td>No</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7030</td>
+									<td>RX MEDICATION UNIT</td>
+									<td>MBq</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7035</td>
+									<td>RX DISPENSE UNIT</td>
+									<td>MBq</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7040</td>
+									<td>RX DISPENSE ROUND FACTOR</td>
+									<td>1</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7046</td>
+									<td>RX ADMIN UNIT</td>
+									<td>MBq</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7047</td>
+									<td>RX ADMIN ROUND FACTOR</td>
+									<td>1</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7048</td>
+									<td>RX ADMIN ROUND METHOD</td>
+									<td>Nearest</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7050</td>
+									<td>RX ALLOWED ORDER UNITS</td>
+									<td>MBq</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7055</td>
+									<td>RX ALLOWED ROUTES</td>
+									<td>Intravenous</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7057</td>
+									<td>RX ALLOWED ROUTES DEFAULT</td>
+									<td>Yes</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7215</td>
+									<td>DEFAULT DISPENSE CODE</td>
+									<td>No Label</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>9650</td>
+									<td>VALID FOR PRESCRIPTION</td>
+									<td>Yes</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>11030</td>
+									<td>MAXIMUM REFILLS</td>
+									<td>0</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>11400</td>
+									<td>FREQUENCY LIST</td>
+									<td>200902 - Once only</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>11410</td>
+									<td>ROUTE LIST</td>
+									<td>Intravenous</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>11921</td>
+									<td>Unit After Star</td>
+									<td>Days</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>11926</td>
+									<td>Unit Before End</td>
+									<td>Days</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>24140</td>
+									<td>REQ BARCODE SCA</td>
+									<td>No</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>24160</td>
+									<td>Admin Group</td>
+									<td>Radiology Medications</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>24200</td>
+									<td>Order Composer Contexts</td>
+									<td>Inpatient</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>24210</td>
+									<td>Order Composer Configurations</td>
+									<td>4080200001 - RX SIMPLE MED</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>34525</td>
+									<td>IP MAR Flowsheet Rows</td>
+									<td>1051000014<br />1051000015<br />1051000012<br />1051000013</td>
+									<td>R MEASURED ACTIVITY<br />R MEASURED ACTIVITY TIME<br />R RESIDUAL
+										ACTIVITY<br />R RESIDUAL ACTIVITY TIME</td>
+								</tr>
+								<tr>
+									<td>34526</td>
+									<td>IP MAR FLOWSHEET REQUIRED?</td>
+									<td>Recommended<br />Recommended<br />Recommended<br />Recommended</td>
+									<td>Always</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+				<section>
+					<p>Clinical Trial Mixture</p>
+					<p>Production unit<br />Chris wants it build properly<br />- send us spec<br />- similar to IV
+						SACT<br />- start next quarter</p>
+					<p>Design spec for Chris<br />- standards<br />- us two can work with Chris to develop that</p>
+					<p><br />Standard of care mixtures<br />- we get them on standard of care request form, not filled
+						in correctly and hard to interpret<br />- NK is working with UMC to design a new request form
+						(MS form)<br />- to be approved<br />- pilot</p>
+					<p>- request<br />- what is the raw material (basic rule), concentration, liquid or powder, what
+						units - first step<br />- does it need to be diluted? (Base or QS Base)<br />- if yes, mixture
+						dilution required<br />- is it something that they would add to the bag?<br />- remove from bag
+						and add the drug</p>
+					<p>- most are nurse-prep mixture <br />- no consumables<br />- for non-cancer (only add raw material
+						and vehicle) - we dont want them to have to scan the water for injection<br />- for clinical
+						trials, in the future<br />- consumable lists in spec (i.e. diluent) diluent not included for
+						nurse prep<br />- new dispense code is needed for production labels (currently, we use Epysis
+						which basically tells them to get the label from Epysis)<br />- total volume for infusion<br />-
+						Fixed concentration / ratio-based mixture<br />- what is the ratio<br />- admin over
+						duration<br />- in SACT, we don't put admin over times because we use these drugs in so many
+						protocols (otherwise, IV SACT records will be hard to maintain)<br />- for SOC, okay to have
+						buttons or defaults<br />- adult<br />- paeds<br />- do it with different dose, volume or
+						mixture</p>
+					<p>- weight restriction/ dose restriction<br />- these contexts will be used to determine if we can
+						use orderable<br />- in orderable can have different contexts (adult/paeds/etc)<br /><br />-
+						drug restriction based on a particular location, i.e. in ICU (build in orderable e.g. only
+						select this mixture when the patient is in ICU)</p>
+					<p>Beacon - IV SACT<br />Willow - SOC mixtures/ Non-cancer CT<br />Thought process of build in
+						OneNote notes (per analyst or HCM)</p>
+					<p>The preference for orderset, therapy plan, beacon protocol -&gt; create an orderable<br />Going
+						forward, we need to formulate strategies (do we need to create orderables?)</p>
+					<p><br />MAR type and PREP type - not for non-cancer mixtures (so that it won't appear in MAR Chemo
+						tab)<br />Template type - Mixture<br />Group One - if SACT, populate this. Restricts that drug
+						from being prescribed outside the protocol.<br />- Advance prep chemo - is used for advance prep
+						reports to order ahead of times<br />- for non-cancer CT drugs, no advance prep report at the
+						meantime. It's manual communication.<br />Group Three - Blueteq<br />IP order defaults - as per
+						standard build<br />If vial will only be prescribed as a mixture - Mixture component only -
+						Yes<br />raw ingredient, mg, ml, ml (not vial, syringe etc)<br />standard rounding table i.e.
+						Nurse prep - use system defaults<br />for Chris production - 5% deviation<br />raw material -
+						dispense code is Inpatient (standard). This may change when Chris comes up with non-cancer
+						clinical trials<br />Do not dispense - will be dependent on<br />- if it's something that will
+						only be ever be prescribed as a mixture, i.e. nurse prep, leave this blank<br />- do not
+						dispense blank unless patient could have come in with it<br />Only configure buttons if it can
+						be used on it's own (not particularly a mixture component)</p>
+					<p>Mixture settings<br />- for cancer mixture, goes to OP order help text <br />- order display
+						name<br />- QS based <br />- volume field is populated Mixture setup 1<br />- calculate volume -
+						yes<br />- calculate rate - yes<br />- nurse prep or if made in ward - do not put stability, and
+						it can vary</p>
+					<p>- Base <br />- add volume in Mixture setup 2, not in 1</p>
+					<p>dispense components <br />- if made in productions, set to No<br />- if made up in ward, set to
+						Yes. The system tells what is dispensed from the pharmacy based on location. Nurse will prep the
+						mixture.<br /><br />Read guide on Overfill mixtures<br />name extension - do not use
+						408449<br />Dispense code - TBC for standard of care, for clinical trials use Investigational
+						med Episys<br />Do not dispense - blank (always for mixture)</p>
+					<p><br />To be continued - MAR FLowsheet</p>
+				</section>
+
+
+
+			</div>
+		</div>
+
+
+
+
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="copyright">
+					<li>&copy; 2022. All rights reserved</li>
+					<li>Design: <a href="">JC</a></li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
