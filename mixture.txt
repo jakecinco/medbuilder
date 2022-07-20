@@ -1,0 +1,96 @@
+Clinical Trial Mixture
+
+Production unit
+Chris wants it build properly
+- send us spec
+- similar to IV SACT
+- start next quarter
+
+Design spec for Chris
+- standards
+- us two can work with Chris to develop that
+
+
+Standard of care mixtures
+- we get them on standard of care request form, not filled in correctly and hard to interpret
+- NK is working with UMC to design a new request form (MS form)
+    - to be approved
+    - pilot
+
+    - request
+        - what is the raw material (basic rule), concentration, liquid or powder, what units - first step
+        - does it need to be diluted? (Base or QS Base)
+            - if yes, mixture dilution required
+            - is it something that they would add to the bag?
+            - remove from bag and add the drug
+
+            - most are nurse-prep mixture  
+                - no consumables
+                - for non-cancer (only add raw material and vehicle) - we dont want them to have to scan the water for injection
+                - for clinical trials, in the future
+                - consumable lists in spec (i.e. diluent) diluent not included for nurse prep
+                - new dispense code is needed for production labels (currently, we use Epysis which basically tells them to get the label from Epysis)
+                - total volume for infusion
+                - Fixed concentration / ratio-based mixture
+                    - what is the ratio
+                - admin over duration
+                    - in SACT, we don't put admin over times because we use these drugs in so many protocols (otherwise, IV SACT records will be hard to maintain)
+                    - for SOC, okay to have buttons or defaults
+                - adult
+                - paeds
+                    - do it with different dose, volume or mixture
+
+                - weight restriction/ dose restriction
+                - these contexts will be used to determine if we can use orderable
+                    - in orderable can have different contexts (adult/paeds/etc)
+                
+                - drug restriction based on a particular location, i.e. in ICU (build in orderable e.g. only select this mixture when the patient is in ICU)
+
+                Beacon - IV SACT
+                Willow - SOC mixtures/ Non-cancer CT
+        Thought process of build in OneNote notes (per analyst or HCM)
+
+        The preference for orderset, therapy plan, beacon protocol -> create an orderable
+        Going forward, we need to formulate strategies (do we need to create orderables?)
+
+
+        MAR type and PREP type - not for non-cancer mixtures (so that it won't appear in MAR Chemo tab)
+        Template type - Mixture
+        Group One - if SACT, populate this. Restricts that drug from being prescribed outside the protocol.
+            - Advance prep chemo - is used for advance prep reports to order ahead of times
+            - for non-cancer CT drugs, no advance prep report at the meantime. It's manual communication.
+        Group Three - Blueteq
+        IP order defaults - as per standard build
+        If vial will only be prescribed as a mixture - Mixture component only - Yes
+        raw ingredient, mg, ml, ml (not vial, syringe etc)
+        standard rounding table i.e. Nurse prep - use system defaults
+        for Chris production - 5% deviation
+        raw material - dispense code is Inpatient (standard). This may change when Chris comes up with non-cancer clinical trials
+        Do not dispense - will be dependent on
+            - if it's something that will only be ever be prescribed as a mixture, i.e. nurse prep, leave this blank
+            - do not dispense blank unless patient could have come in with it
+        Only configure buttons if it can be used on it's own (not particularly a mixture component)
+
+        Mixture settings
+        - for cancer mixture, goes to OP order help text 
+        - order display name
+        - QS based 
+            - volume field is populated Mixture setup 1
+            - calculate volume - yes
+            - calculate rate - yes
+            - nurse prep or if made in ward - do not put stability, and it can vary
+
+        - Base 
+            - add volume in Mixture setup 2, not in 1
+
+            dispense components 
+                - if made in productions, set to No
+                - if made up in ward, set to Yes. The system tells what is dispensed from the pharmacy based on location. Nurse will prep the mixture.
+        
+        Read guide on Overfill mixtures
+        name extension - do not use 408449
+        Dispense code - TBC for standard of care, for clinical trials use Investigational med Episys
+        Do not dispense - blank (always for mixture)
+
+
+To be continued - MAR FLowsheet

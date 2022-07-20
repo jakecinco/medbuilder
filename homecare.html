@@ -1,0 +1,465 @@
+<!DOCTYPE HTML>
+
+<html>
+
+
+<head>
+	<title>Homecare - WAM inline order</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<script src="script.js"></script>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<main-header></main-header>
+			</div>
+		</header>
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="foc-smarttexts.html">FOC SmartTexts</a></li>
+				<li><a href="reference-links.html">Reference Links</a></li>
+				<li><a href="prn-reasons.html">PRN Reasons</a></li>
+				<li><a href="groups1and3.html">Group 1 and 3</a></li>
+				<li><a href="elements.html">Elements</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>Homecare ERX</h1>
+				<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
+				<p>
+					For inline WAM entry build only. <br>
+					Refer to standard med build for HC ERX ordered in Hyperspace.
+				</p>
+
+
+
+				<!-- Form -->
+				<section>
+					<h2>Form</h2>
+					<form onsubmit="saveFormAsTextFile(); return false;">
+						<div class="table-wrapper">
+							<table class="alt">
+								<thead>
+									<tr>
+										<th>Item</th>
+										<th>Description</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>.1</td>
+										<td>Med ID</td>
+										<td>
+											<div class="t-top t-lg full-width" data-tooltip="Enter 8008 + 4 numbers">
+												<input type="text" name="med-id" id="med-id" autocomplete="off" required
+													pattern="[8008]+[0-9]{4}" />
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>.2</td>
+										<td>
+											<div class="t-top t-lg full-width"
+												data-tooltip="Add BRAND if required. PACK SIZE if more than one exists (used mostly for bulk items - ie. creams, ointments)">
+												Medication name</div>
+
+										</td>
+										<td>
+											<div class="t-top t-xl full-width"
+												data-tooltip="HC + DRUG + (BRAND) + STRENGTH + FORM + PACK SIZE">
+												<input type="text" name="drug-name" id="drug-name"
+													autocomplete="off" required />
+											</div>
+										</td>
+
+									</tr>
+									<tr>
+										<td>400</td>
+										<td>Proxy Meds for Interactions and Filters</td>
+										<td>
+											<div class="t-top t-md full-width" data-tooltip="Add FDB record, if applicable">
+												<input type="text" name="proxy-meds" id="proxy-meds" data-html="true"
+													/>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>826</td>
+										<td>Dispense Unit Override</td>
+										<td>
+											<div class="t-top t-xl full-width" data-tooltip="Add dispensable unit">
+												<input type="text" name="disp-unit" id="disp-unit" autocomplete="off"
+													required />
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1102</td>
+										<td>Outpatient Display Name</td>
+										<td>
+											<div class="t-top t-xl full-width"
+												data-tooltip="(Homecare) + drug + (BRAND) + strength + form + pack size">
+												<input type="text" name="op-name" id="op-name" autocomplete="off"
+												value="(Homecare) "	required />
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-12">
+							<ul class="actions">
+								<li><input type="submit" value="Create import file" class="primary" />
+								</li>
+								<li><input type="reset" value="Reset" /></li>
+							</ul>
+						</div>
+
+
+
+						<!-- <div class="row gtr-uniform">
+								<div class="col-6 col-12-xsmall">
+									<label for="med-id">Med ID</label>
+									<input type="text" name="med-id" id="med-id" placeholder="8008 + 4 numbers" required/>
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<label for="drug-name">Drug name</label>
+									<input type="email" name="drug-name" id="drug-name" value="" placeholder="Drug name" />
+								</div>
+
+								<div class="col-6 col-12-xsmall">
+									<label for="med-id">Med ID</label>
+									<input type="text" name="med-id" id="med-id" placeholder="Med ID"/>
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+								</div>
+								
+
+								<div class="col-12">
+									<select name="demo-category" id="demo-category">
+										<option value="">- Category -</option>
+										<option value="1">Manufacturing</option>
+										<option value="1">Shipping</option>
+										<option value="1">Administration</option>
+										<option value="1">Human Resources</option>
+									</select>
+								</div>
+								<div class="col-4 col-12-small">
+									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+									<label for="demo-priority-low">Low</label>
+								</div>
+								<div class="col-4 col-12-small">
+									<input type="radio" id="demo-priority-normal" name="demo-priority">
+									<label for="demo-priority-normal">Normal</label>
+								</div>
+								<div class="col-4 col-12-small">
+									<input type="radio" id="demo-priority-high" name="demo-priority">
+									<label for="demo-priority-high">High</label>
+								</div>
+								<div class="col-6 col-12-small">
+									<input type="checkbox" id="demo-copy" name="demo-copy">
+									<label for="demo-copy">Email me a copy</label>
+								</div>
+								<div class="col-6 col-12-small">
+									<input type="checkbox" id="demo-human" name="demo-human" checked>
+									<label for="demo-human">Not a robot</label>
+								</div>
+								<div class="col-12">
+									<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+								</div>
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="submit" value="Create import file" class="primary"/>
+										</li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</div>
+							</div> -->
+
+					</form>
+				</section>
+
+				<br>
+				<hr>
+
+				<!-- Table -->
+				<section>
+					<h2>Homecare ERX Items Table</h2>
+
+
+					<h3>Configuration</h3>
+					<div class="table-wrapper">
+						<table class="alt">
+							<thead>
+								<tr>
+									<th>Item</th>
+									<th>Description</th>
+									<th>Value</th>
+									<th>Comments</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>.1</td>
+									<td>Med ID</td>
+									<td>8008<b>XXXX</b></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>.2</td>
+									<td>Medication name</td>
+									<td>HC + DRUG + (BRAND) + STRENGTH + FORM + PACK SIZE</td>
+									<td><em>Brand</em> if required and specified in request<br /><em>Pack</em> size if
+										more than one exists (used mostly for bulk items - ie. creams, ointments)
+									</td>
+								</tr>
+								<tr>
+									<td>9650</td>
+									<td>Valid for Prescription</td>
+									<td>Yes</td>
+									<td>Always for custom records</td>
+								</tr>
+								<tr>
+									<td>7200</td>
+									<td>Dispensable Product</td>
+									<td>Blank</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>4120</td>
+									<td>RX Group Three</td>
+									<td>Blueteq Drug</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>4130</td>
+									<td>RX Group Four</td>
+									<td>Homecare</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>112</td>
+									<td>Pharmaceutical Subclass</td>
+									<td>Homecare</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>190</td>
+									<td>IMS Enabled</td>
+									<td>No</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>196</td>
+									<td>Hide from OP IMS</td>
+									<td>Yes</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>400</td>
+									<td>Proxy Meds for Interactions and Filters</td>
+									<td>Add FDB record</td>
+									<td>If applicable</td>
+								</tr>
+								<tr>
+									<td>210</td>
+									<td>GPI</td>
+									<td>Blank</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>850</td>
+									<td>Begin Age Override</td>
+									<td>Blank</td>
+									<td>To unlock the additional settings for disp quantity/unit</td>
+								</tr>
+								<tr>
+									<td>825</td>
+									<td>Dispense Quantity Override</td>
+									<td>1</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>826</td>
+									<td>Dispense Unit Override</td>
+									<td>Add dispensable unit</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>830</td>
+									<td>Refill Overdue</td>
+									<td>0</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>1102</td>
+									<td>Outpatient Display Name</td>
+									<td>(Homecare) + drug + (BRAND) + strength + form + pack size</td>
+									<td><em>Brand</em> if required and specified in request<br /><em>Pack</em> size if
+										more than one exists (used mostly for bulk items - ie. creams, ointments)</td>
+								</tr>
+								<tr>
+									<td>1100</td>
+									<td>Order Display Name</td>
+									<td>Not Required</td>
+									<td>Homecare ERXs are not for IP use</td>
+								</tr>
+								<tr>
+									<td>1115</td>
+									<td>Short Name</td>
+									<td>BLANK</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>3080</td>
+									<td>Brand Name</td>
+									<td>Not Required</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>3090</td>
+									<td>IP Suffix</td>
+									<td>Not Required</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>3091</td>
+									<td>OP Suffix</td>
+									<td>Not Required</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>3051</td>
+									<td>AMB Include Strength in Med Order Name?</td>
+									<td>No</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>3071</td>
+									<td>AMB Include Form in Med Order Name?</td>
+									<td>No</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>3001</td>
+									<td>AMB Med Order Name at Ordering Prog. Point</td>
+									<td>UCLH RXNAME OP ORDER DISPLAY NAME [40814924]</td>
+									<td>aka Naming Extension<br />This LPP uses the OP Display Name as the order name
+									</td>
+								</tr>
+								<tr>
+									<td>3002</td>
+									<td>AMB Filing Med Order Name Prog. Point</td>
+									<td>UCLH RXNAME OP ORDER DISPLAY NAME [40814924]</td>
+									<td>aka Naming Extension<br />This LPP uses the OP Display Name as the order name
+									</td>
+								</tr>
+								<tr>
+									<td>11545</td>
+									<td>Outpatient Order Class Default</td>
+									<td>81 - Urgent/Complex medication (UCLH to dispense)</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7050</td>
+									<td>Allowed Order Units</td>
+									<td>Add dispensable unit</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>7215</td>
+									<td>Default Dispense Code</td>
+									<td>Not Required</td>
+									<td></td>
+
+								</tr>
+								<tr>
+									<td>48200</td>
+									<td>Rx Do Not Dispense</td>
+									<td>Yes</td>
+									<td>Always</td>
+								</tr>
+								<tr>
+									<td>10300</td>
+									<td>Outpatient Order Questions</td>
+									<td>UCLH HCD BLUETEQ ID [408002]</td>
+									<td>If it's a drug (not in-line WAM entry)</td>
+								</tr>
+								<tr>
+									<td>2000</td>
+									<td>Use Alternatives</td>
+									<td>No</td>
+									<td>Always</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+				<!-- Lists -->
+				<br>
+				<hr>
+				<section>
+					<h2>Notes</h2>
+					<div class="row">
+						<div class="col-12-large">
+							<!-- <h3>Unordered</h3> -->
+							<ul>
+								<li>Clinical Medication Information Screen - copy from base/reference record</li>
+								<li>Defaults for ordering - follow same rules as regular medbuild</li>
+								<li>Equivalency settings - same logic as standard build</li>
+								<li>Add to outpatient LPF - UCLH OUTPATIENT MEDICATION PREFERENCE LIST [4080000005]</li>
+								<li>Create NDC with pack size of 1 (unless they dispense by outer pack unit)</li>
+								<li>Create PRD</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</div>
+
+
+
+
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="copyright">
+					<li>&copy; 2022. All rights reserved</li>
+					<li>Design: <a href="">JC</a></li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
