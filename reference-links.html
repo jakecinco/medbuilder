@@ -1,32 +1,52 @@
-<!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Elements - Phantom by HTML5 UP</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript>
-        <link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/noscript.css" noscript>
     <script src="script.js"></script>
+    <script>
+        const copyButton = document.querySelector(".copy-btn");
+        const copyContent = [
+            "BNFc",
+            "BNF",
+            "UCLH Neonatal Monographs",
+            "Medusa",
+            "1002732",
+            " ",
+            "1002731",
+            " ",
+            "https://bnfc.nice.org.uk/drug/",
+            "https://bnf.nice.org.uk/drug/",
+            "https://my.uclh.nhs.uk/Interact/Pages/Section/SubFullOne.aspx?subsection=8086",
+            "https://medusa.wales.nhs.uk/?ID=a19f785a2b51d55da73b12bcb16325e73381"
+        ].join("\n");
+
+        async function addToClipboard(text) {
+            await navigator.clipboard.writeText(text);
+        }
+
+        async function copyLinksToClipboard() {
+            await addToClipboard(copyContent);
+            copyButton.innerText = 'Copied';
+            setTimeout(() => {
+                copyButton.innerText = 'Copy links';
+            }, 3000);
+        }
+
+        copyButton.addEventListener('click', copyLinksToClipboard);
+    </script>
 </head>
 
 <body class="is-preload">
-    <!-- Wrapper -->
     <div id="wrapper">
-
-        <!-- Header -->
         <header id="header">
             <div class="inner">
                 <main-header></main-header>
             </div>
         </header>
-        <!-- Menu -->
         <nav id="menu">
             <h2>Menu</h2>
             <ul>
@@ -39,15 +59,11 @@
             </ul>
         </nav>
 
-        <!-- Main -->
         <div id="main">
             <div class="inner">
                 <h1>Reference Links</h1>
-
-                <!-- Table -->
                 <section>
                     <h2>Table</h2>
-
                     <div class="table-wrapper">
                         <table class="alt">
                             <thead>
@@ -60,37 +76,30 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Item No</td>
-                                    <td>1300</td>
-                                    <td>1305</td>
-                                    <td>1310</td>
-                                </tr>
-                                <tr>
-                                    <td>Item Name</td>
-                                    <td>REFERENCE LINKS - DISPLAY NAME</td>
-                                    <td>REFERENCE LINKS - RULE</td>
-                                    <td>REFERENCE LINKS - LOCATION</td>
+                                    <td><strong>Item</strong></td>
+                                    <td><strong>1300 - Display Name</strong></td>
+                                    <td><strong>1305 - Rule</strong></td>
+                                    <td><strong>1310 - Location</strong></td>
                                 </tr>
                                 <tr>
                                     <td>Content</td>
                                     <td>BNFc<br />BNF<br />UCLH Neonatal Monographs<br />Medusa</td>
                                     <td>1002732<br /><br />1002731</td>
-                                    <td>https://bnfc.nice.org.uk/drug/<br />https://bnf.nice.org.uk/drug/<br />https://my.uclh.nhs.uk/Interact/Pages/Section/SubFullOne.aspx?subsection=8086<br />https://medusa.wales.nhs.uk/?ID=a19f785a2b51d55da73b12bcb16325e73381
+                                    <td>
+                                        https://bnfc.nice.org.uk/drug/<br />
+                                        https://bnf.nice.org.uk/drug/<br />
+                                        https://my.uclh.nhs.uk/Interact/Pages/Section/SubFullOne.aspx?subsection=8086<br />
+                                        https://medusa.wales.nhs.uk/?ID=a19f785a2b51d55da73b12bcb16325e73381
                                     </td>
                                 </tr>
-
                             </tbody>
-
                         </table>
                     </div>
                 </section>
                 <button class="copy-btn">Copy links</button>
-
-
             </div>
         </div>
 
-        <!-- Footer -->
         <footer id="footer">
             <div class="inner">
                 <ul class="copyright">
@@ -99,47 +108,12 @@
                 </ul>
             </div>
         </footer>
-
     </div>
 
-    <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        //Copy
-        const button = document.querySelector(".copy-btn")
-        const links = [
-                "BNFc",
-                "BNF",
-                "UCLH Neonatal Monographs",
-                "Medusa",	
-                "1002732",
-                " ",
-                "1002731",
-                " ",
-                "https://bnfc.nice.org.uk/drug/",
-                "https://bnf.nice.org.uk/drug/",
-                "https://my.uclh.nhs.uk/Interact/Pages/Section/SubFullOne.aspx?subsection=8086",
-                "https://medusa.wales.nhs.uk/?ID=a19f785a2b51d55da73b12bcb16325e73381"].join("\n");
-
-        const addToClipboard = async (link) => {
-            await navigator.clipboard.writeText(link);
-        }
-
-        const copyLink = async (link) => {
-            const copied = await addToClipboard(link)
-            button.innerText = 'Copied'
-            setTimeout(() => {
-                button.innerText = 'Copy links'
-            }, 3000)
-        };
-
-        button.addEventListener('click', () => copyLink(links))
-    </script>
-
 </body>
-
 </html>
